@@ -5,11 +5,13 @@
 # From Java To Kotlin
 [![Mindorks](https://img.shields.io/badge/mindorks-opensource-blue.svg)](https://mindorks.com/open-source-projects)
 [![Mindorks Community](https://img.shields.io/badge/join-community-blue.svg)](https://mindorks.com/join-community)
+[![Mindorks Android Store](https://img.shields.io/badge/Mindorks%20Android%20Store-From%20Java%20To%20Kotlin-blue.svg?style=flat)](https://mindorks.com/android/store)
+
 > From Java To Kotlin - Your Cheat Sheet For Java To Kotlin
 
 [中文支持](https://github.com/MindorksOpenSource/from-java-to-kotlin/blob/master/README-ZH.md)
 ---
-
+## Print to Console
 > Java
 
 ```java
@@ -25,7 +27,7 @@ println("Amit Shekhar")
 ```
 
 ---
-
+## Constants and Variables
 > Java
 
 ```java
@@ -41,7 +43,7 @@ val name = "Amit Shekhar"
 ```
 
 ---
-
+## Assigning the null value
 > Java
 
 ```java
@@ -57,7 +59,7 @@ otherName = null
 ```
 
 ---
-
+## Verify if value is null
 > Java
 
 ```java
@@ -72,12 +74,12 @@ if (text != null) {
 text?.let {
     val length = text.length
 }
-// or simple
+// or simply
 val length = text?.length
 ```
 
 ---
-
+## Concatenation of strings
 > Java
 
 ```java
@@ -95,7 +97,7 @@ val message = "My name is: $firstName $lastName"
 ```
 
 ---
-
+## New line in string
 > Java
 
 ```java
@@ -115,7 +117,7 @@ val text = """
 ```
 
 ---
-
+## Ternary Operations
 > Java
 
 ```java
@@ -131,13 +133,13 @@ log(message != null ? message : "");
 val text = if (x > 5)
               "x > 5"
            else "x <= 5"
-	   
+
 val message: String? = null
 log(message ?: "")
 ```
 
 ---
-
+## Bitwise Operators
 > Java
 
 ```java
@@ -146,6 +148,7 @@ final int orResult   = a | b;
 final int xorResult  = a ^ b;
 final int rightShift = a >> 2;
 final int leftShift  = a << 2;
+final int unsignedRightShift = a >>> 2;
 ```
 
 > Kotlin
@@ -156,10 +159,11 @@ val orResult   = a or b
 val xorResult  = a xor b
 val rightShift = a shr 2
 val leftShift  = a shl 2
+val unsignedRightShift = a ushr 2
 ```
 
 ---
-
+## Check the type and casting
 > Java
 
 ```java
@@ -180,7 +184,7 @@ var car = object as? Car // var car = object as Car?
 ```
 
 ---
-
+## Check the type and casting (implicit)
 > Java
 
 ```java
@@ -203,7 +207,7 @@ if (object is Car?) {
 ```
 
 ---
-
+## Multiple conditions
 > Java
 
 ```java
@@ -217,7 +221,7 @@ if (score in 0..300) { }
 ```
 
 ---
-
+## Multiple Conditions (Switch case)
 > Java
 
 ```java
@@ -235,7 +239,7 @@ switch (score) {
 		break;
 	case 5:
 	case 4:
-		grade = "Ok";
+		grade = "OK";
 		break;
 	case 3:
 	case 2:
@@ -252,16 +256,16 @@ switch (score) {
 ```kotlin
 var score = // some score
 var grade = when (score) {
-	9, 10 -> "Excellent" 
+	9, 10 -> "Excellent"
 	in 6..8 -> "Good"
-	4, 5 -> "Ok"
+	4, 5 -> "OK"
 	in 1..3 -> "Fail"
 	else -> "Fail"
 }
 ```
 
 ---
-
+## For-loops
 > Java
 
 ```java
@@ -291,7 +295,7 @@ for (i in 10 downTo 0) { }
 
 for (i in 1..10 step 2) { }
 
-for (i in 10 downTo 1 step 2) { }
+for (i in 10 downTo 0 step 2) { }
 
 for (item in collection) { }
 
@@ -299,7 +303,7 @@ for ((key, value) in map) { }
 ```
 
 ---
-
+## Collections
 > Java
 
 ```java
@@ -328,7 +332,7 @@ val keyValue = mapOf(1 to "Amit",
 ```
 
 ---
-
+## for each
 > Java
 
 ```java
@@ -367,7 +371,7 @@ cars.parallelStream().filter { it.speed > 100 }.forEach { println(it.speed)}
 ```
 
 ---
-
+## Splitting arrays
 > java
 
 ```java
@@ -384,7 +388,7 @@ val (param, value) = "param=car".split("=")
 ```
 
 ---
-
+## Defining methods
 > Java
 
 ```java
@@ -402,7 +406,7 @@ fun doSomething() {
 ```
 
 ---
-
+## Variable number of arguments
 > Java
 
 ```java
@@ -420,7 +424,7 @@ fun doSomething(vararg numbers: Int) {
 ```
 
 ---
-
+## Defining methods with return
 > Java
 
 ```java
@@ -441,10 +445,14 @@ fun getScore(): Int {
 // as a single-expression function
 
 fun getScore(): Int = score
+
+// even simpler (type will be determined automatically)
+
+fun getScore() = score // return-type is Int
 ```
 
 ---
-
+## Returning result of an operation
 > Java
 
 ```java
@@ -464,23 +472,27 @@ fun getScore(value: Int): Int {
 
 // as a single-expression function
 fun getScore(value: Int): Int = 2 * value
+
+// even simpler (type will be determined automatically)
+
+fun getScore(value: Int) = 2 * value // return-type is int
 ```
 
 ---
-
+## Constructors
 > Java
 
 ```java
 public class Utils {
 
-    private Utils() { 
-      // This utility class is not publicly instantiable 
+    private Utils() {
+      // This utility class is not publicly instantiable
     }
-    
+
     public static int getScore(int value) {
         return 2 * value;
     }
-    
+
 }
 ```
 
@@ -490,15 +502,15 @@ public class Utils {
 class Utils private constructor() {
 
     companion object {
-    
+
         fun getScore(value: Int): Int {
             return 2 * value
         }
-        
+
     }
 }
 
-// other way is also there
+// another way
 
 object Utils {
 
@@ -510,7 +522,7 @@ object Utils {
 ```
 
 ---
-
+## Getters and Setters
 > Java
 
 ```java
@@ -577,7 +589,7 @@ data class Developer(var name: String, var age: Int)
 ```
 
 ---
-
+## Cloning or copying
 > Java
 
 ```java
@@ -597,12 +609,12 @@ public class Developer implements Cloneable {
     }
 }
 
-// cloning or copying 
+// cloning or copying
 Developer dev = new Developer("Mindorks", 30);
 try {
-     Developer dev2 = (Developer) dev.clone();
+    Developer dev2 = (Developer) dev.clone();
 } catch (CloneNotSupportedException e) {
-     // Handle Exception
+    // handle exception
 }
 
 ```
@@ -621,20 +633,20 @@ val dev2 = dev.copy(age = 25)
 ```
 
 ---
-
+## Class methods
 > Java
 
 ```java
 public class Utils {
 
-    private Utils() { 
-      // This utility class is not publicly instantiable 
+    private Utils() {
+      // This utility class is not publicly instantiable
     }
-    
+
     public static int triple(int value) {
         return 3 * value;
     }
-    
+
 }
 
 int result = Utils.triple(3);
@@ -652,7 +664,7 @@ var result = 3.triple()
 ```
 
 ---
-
+## Defining uninitialized objects
 > Java
 
 ```java
@@ -664,17 +676,120 @@ Person person;
 ```kotlin
 internal lateinit var person: Person
 ```
+---
+## enum
+> Java
+
+```java
+public enum Direction {
+        NORTH(1),
+        SOUTH(2),
+        WEST(3),
+        EAST(4);
+
+        int direction;
+
+        Direction(int direction) {
+            this.direction = direction;
+        }
+
+        public int getDirection() {
+            return direction;
+        }
+    }
+```
+> Kotlin
+
+```kotlin
+enum class Direction constructor(direction: Int) {
+    NORTH(1),
+    SOUTH(2),
+    WEST(3),
+    EAST(4);
+
+    var direction: Int = 0
+        private set
+
+    init {
+        this.direction = direction
+    }
+}
+```
+---
 
 
+## Sorting List
+> Java
+
+```java
+List<Profile> profiles = loadProfiles(context);
+Collections.sort(profiles, new Comparator<Profile>() {
+    @Override
+    public int compare(Profile profile1, Profile profile2) {
+        if (profile1.getAge() > profile2.getAge()) return 1;
+        if (profile1.getAge() < profile2.getAge()) return -1;
+        return 0;
+    }
+});
+
+```
+
+> Kotlin
+
+```kotlin
+val profile = loadProfiles(context)
+profile.sortedWith(Comparator({ profile1, profile2 ->
+    if (profile1.age > profile2.age) return@Comparator 1
+    if (profile1.age < profile2.age) return@Comparator -1
+    return@Comparator 0
+}))
+```
+---
+
+## Anonymous Class
+> Java
+
+```java
+ AsyncTask<Void, Void, Profile> task = new AsyncTask<Void, Void, Profile>() {
+    @Override
+    protected Profile doInBackground(Void... voids) {
+        // fetch profile from API or DB
+        return null;
+    }
+
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        // do something
+    }
+};
+
+```
+
+> Kotlin
+
+```kotlin
+val task = object : AsyncTask<Void, Void, Profile>() {
+    override fun doInBackground(vararg voids: Void): Profile? {
+        // fetch profile from API or DB
+        return null
+    }
+
+    override fun onPreExecute() {
+        super.onPreExecute()
+        // do something
+    }
+}
+```
 ---
 
 ### Important things to know in Kotlin
-* [Learn Kotlin - lateinit vs lazy](https://mindorks.com/blog/learn-kotlin-lateinit-vs-lazy)
-* [Learn Kotlin - apply vs with](https://mindorks.com/blog/learn-kotlin-apply-vs-with)
-* [Learn Kotlin - Data Class](https://mindorks.com/blog/learn-kotlin-data-class)
-* [Learn Kotlin - Destructuring Declarations](https://mindorks.com/blog/learn-kotlin-destructuring-declarations)
-* [Learn Kotlin - Extension Functions](https://mindorks.com/blog/learn-kotlin-extension-functions)
-* [Learn Kotlin - Sealed Classes](https://mindorks.com/blog/learn-kotlin-sealed-classes)
+* [Learn Kotlin - lateinit vs lazy](https://blog.mindorks.com/learn-kotlin-lateinit-vs-lazy)
+* [Learn Kotlin - apply vs with](https://blog.mindorks.com/learn-kotlin-apply-vs-with)
+* [Learn Kotlin - Data Class](https://blog.mindorks.com/learn-kotlin-data-class)
+* [Learn Kotlin - Destructuring Declarations](https://blog.mindorks.com/learn-kotlin-destructuring-declarations)
+* [Learn Kotlin - Extension Functions](https://blog.mindorks.com/learn-kotlin-extension-functions)
+* [Learn Kotlin - Sealed Classes](https://blog.mindorks.com/learn-kotlin-sealed-classes)
 
 ### Found this project useful :heart:
 * Support by clicking the :star: button on the upper right of this page. :v:
@@ -700,4 +815,4 @@ internal lateinit var person: Person
 ```
 
 ### Contributing to From Java To Kotlin
-Just make pull request. You are in!
+Just make a pull request. You are in!
